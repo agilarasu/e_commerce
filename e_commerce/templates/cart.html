@@ -1,7 +1,59 @@
 {% extends 'base_generic.html' %}
 {% load my_filters %}
-
 {% block content %}
+    <style>.cart {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.cart-item {
+    flex: 0 0 calc(50% - 0.5rem); /* Adjust width as needed */
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.cart-item:hover {
+    transform: translateY(-3px);
+}
+
+.cart-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensures image fills container */
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.cart-total a {
+    background-color: #007bff;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.cart-total a:hover {
+    background-color: #0056b3;
+}
+</style>
 <div class="cart">
     <h2>Your Cart</h2>
     <p>Address: {{ profile.address }}</p>
@@ -13,22 +65,19 @@
         <p>Price: ${{ item.product.price }}</p>
         <p>Quantity: {{ item.quantity }}</p>
         <p>Subtotal: ${{ item.product.price|multiply:item.quantity }}</p>
+        <form method="post" action="{% url 'remove_from_cart' %}">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ item.product.id }}">
+            <button type="submit">Remove from Cart</button>
+        </form>
     </div>
     {% endfor %}
     <div class="cart-total">
         <h3>Total: ${{ cart.total }}</h3>
     </div>
-    <form method="post" action="{% url 'clear_cart' %}">
-        {% csrf_token %}
-        <button type="submit" class="checkout">Checkout</button>
-    </form>
-<form method="get" action="{% url 'clear_cart' %}">
-        {% csrf_token %}
-        <button type="submit" class="clear-cart">Clear Cart</button>
-    </form>
 </div>
     <script>
-document.querySelector('.clear-cart').addEventListener('click', function(event) {
+document.querySelector('.remove_from_cart').addEventListener('click', function(event) {
     event.preventDefault();
     fetch('/clear_cart/', {
         method: 'get',
