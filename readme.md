@@ -44,5 +44,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 [MIT](https://choosealicense.com/licenses/mit/)
 ```
-
-This `README.md` file provides a brief description of the project, lists its main features, and provides instructions for installing and using the application. It also includes a section on how to contribute to the project and specifies the license under which the project is distributed.
