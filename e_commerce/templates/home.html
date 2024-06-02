@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="home">
+    <h2>Welcome to Our E-commerce Site</h2>
+    <p>Explore our wide range of products and enjoy shopping with us.</p>
+    <a href="{% url 'products' %}" class="btn">Explore our products</a>
+    {% if not user.is_authenticated %}
+    <a href="{% url 'login' %}" class="btn">Login/Signup</a>
+    {% endif %}
+</div>
+{% endblock %}

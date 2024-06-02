@@ -1,0 +1,55 @@
+{% extends 'base_generic.html' %}
+{% load my_filters %}
+
+{% block content %}
+<div class="cart">
+    <h2>Your Cart</h2>
+    <p>Address: {{ profile.address }}</p>
+    <p>Phone Number: {{ profile.phone_number }}</p>
+    {% for item in cart.cartitem_set.all %}
+    <div class="cart-item">
+        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+        <h3>{{ item.product.name }}</h3>
+        <p>Price: ${{ item.product.price }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Subtotal: ${{ item.product.price|multiply:item.quantity }}</p>
+    </div>
+    {% endfor %}
+    <div class="cart-total">
+        <h3>Total: ${{ cart.total }}</h3>
+    </div>
+    <form method="post" action="{% url 'clear_cart' %}">
+        {% csrf_token %}
+        <button type="submit" class="checkout">Checkout</button>
+    </form>
+<form method="get" action="{% url 'clear_cart' %}">
+        {% csrf_token %}
+        <button type="submit" class="clear-cart">Clear Cart</button>
+    </form>
+</div>
+    <script>
+document.querySelector('.clear-cart').addEventListener('click', function(event) {
+    event.preventDefault();
+    fetch('/clear_cart/', {
+        method: 'get',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        },
+        credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            alert(data.message);
+            // Remove all cart items from the DOM
+            document.querySelectorAll('.cart-item').forEach(function(cartItem) {
+                cartItem.remove();
+            });
+        } else if (data.error) {
+            alert(data.error);
+        }
+    });
+});
+</script>
+{% endblock %}

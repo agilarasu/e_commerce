@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My E-commerce Site{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffc107;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .filter-form {
+            margin-bottom: 2rem;
+        }
+
+        .filter-form .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .filter-form .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .product-showcase h1 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card figure {
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .product-info h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        .product-info p {
+            margin: 0 0 1rem 0;
+            color: #6c757d;
+        }
+
+        .product-info .price {
+            font-size: 1.25rem;
+            color: #28a745;
+            font-weight: 700;
+        }
+
+        .no-products {
+            text-align: center;
+            font-size: 1.25rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand">My E-commerce Site</div>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="/products">Shop</a>
+
+            {% if user.is_authenticated %}
+
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'cart' %}">Cart</a>
+                <a class="ml-auto" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a class="ml-auto" href="{% url 'login' %}">Login</a>  <!-- Login link -->
+            {% endif %}
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            {% block content %}
+            <!-- Content for each individual page will go here -->
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            &copy; 2024 My E-commerce Site. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

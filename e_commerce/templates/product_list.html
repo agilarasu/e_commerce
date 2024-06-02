@@ -1,0 +1,68 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="filter-form">
+        <form method="get">
+            {{ form.as_p }}
+            <button type="submit" class="btn">Filter</button>
+        </form>
+    </div>
+    <section class="product-showcase">
+        <h1>Our Products</h1>
+        <div class="product-grid">
+            {% for product in products %}
+            <article class="product-card">
+                <figure>
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                </figure>
+                <div class="product-info">
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.description | truncatechars:100 }}</p>
+                    <span class="price">Price: ${{ product.price }}</span>
+                    <form method="post" action="{% url 'add_to_cart' %}">
+                        {% csrf_token %}
+                        <button class="add-to-cart" data-product-id="{{ product.id }}">Add to Cart</button>
+
+
+
+                    </form>
+
+                </div>
+
+            </article>
+            {% empty %}
+            <p class="no-products">No products available yet.</p>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+    <script>
+                        document.querySelectorAll('.add-to-cart').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        var productId = event.target.dataset.productId;
+        fetch('/add_to_cart/', {
+            method: 'POST',
+            body: JSON.stringify({
+                'product_id': productId
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            },
+            credentials: 'same-origin'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+            } else if (data.error) {
+                alert(data.error);
+            }
+        });
+    });
+});
+                        </script>
+{% endblock %}
