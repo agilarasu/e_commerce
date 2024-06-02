@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b33af92-4230-4121-ad36-1019e5741e16" name="Changes" comment="css">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/e_commerce/templates/place_order.html" afterDir="false" />
+    <list default="true" id="3b33af92-4230-4121-ad36-1019e5741e16" name="Changes" comment="Login/Signup page edits">
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_commerce/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_commerce/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_commerce/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_commerce/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_commerce/templates/base_generic.html" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/templates/base_generic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_commerce/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/templates/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_commerce/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_commerce/templates/product_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/templates/product_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_commerce/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_commerce/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +149,7 @@
       <workItem from="1717309805678" duration="5698000" />
       <workItem from="1717317212839" duration="2575000" />
       <workItem from="1717319812430" duration="1396000" />
-      <workItem from="1717331396289" duration="5200000" />
+      <workItem from="1717331396289" duration="5520000" />
     </task>
     <task id="LOCAL-00001" summary="..">
       <option name="closed" value="true" />
@@ -194,17 +183,29 @@
       <option name="project" value="LOCAL" />
       <updated>1717317329144</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Login/Signup page edits">
+      <option name="closed" value="true" />
+      <created>1717337657165</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717337657165</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.ms" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value=".." />
     <MESSAGE value="Changed font and base colour of the application" />
     <MESSAGE value="Changed cart functions and ui" />
     <MESSAGE value="css" />
-    <option name="LAST_COMMIT_MESSAGE" value="css" />
+    <MESSAGE value="Login/Signup page edits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login/Signup page edits" />
   </component>
 </project>
