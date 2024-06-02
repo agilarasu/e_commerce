@@ -1,7 +1,7 @@
+from .models import Product, Profile, Order
 from django import forms
-from .models import Product, Profile
 from django.contrib.auth.forms import UserCreationForm
-
+from django.contrib.auth.models import User
 """class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         error_messages = {
@@ -12,14 +12,32 @@ from django.contrib.auth.forms import UserCreationForm
                 'password_mismatch': "The two password fields didn’t match.",
             },
         }"""
+
 class CustomUserCreationForm(UserCreationForm):
-    password2 = None  # Remove password confirmation field
-
     class Meta(UserCreationForm.Meta):
-        fields = UserCreationForm.Meta.fields + ('password1',)
+        model = User
+        fields = UserCreationForm.Meta.fields
 
-    def clean_password2(self):
-        return self.cleaned_data.get('password1')  # Skip password validation checks
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].label = 'Username:'
+        self.fields['username'].help_text = None
+        self.fields['password1'].label = 'Password:'
+        self.fields['password1'].help_text = None
+        self.fields['password2'].label = 'Password confirmation:'
+        self.fields['password2'].help_text = None
+
+        # Override the error messages (optional)
+        # self.fields['username'].error_messages = {'required': 'Username is required.'}
+        # self.fields['password1'].error_messages = {'required': 'Password is required.'}
+        # self.fields['password2'].error_messages = {'required': 'Password confirmation is required.'}
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        # Your additional logic here (e.g., saving user data)
+        if commit:
+            user.save()
+        return user
 class ProductFilterForm(forms.Form):
     min_price = forms.DecimalField(required=False)
     max_price = forms.DecimalField(required=False)
@@ -30,3 +48,9 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['address', 'phone_number']
+
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['address', 'payment_method', 'coupon']

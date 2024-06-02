@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import Product, Cart
+from .models import Product, Cart, Order
 from .forms import ProductFilterForm
 from .forms import CustomUserCreationForm
+from .forms import OrderForm
 from django.contrib.auth import logout
 from .models import Cart, CartItem, Product, Profile
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import json
+from django.contrib import messages
 from .forms import EditProfileForm
 def home_view(request):
     return render(request, 'home.html')
@@ -16,13 +18,11 @@ def signup_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('products')
+            form.save()
+            return redirect('login')
     else:
         form = CustomUserCreationForm()
     return render(request, 'signup.html', {'form': form})
-
 def signup_view(request):
     if request.user.is_authenticated:
         return redirect('products')
@@ -67,12 +67,9 @@ def product_list_view(request):
             products = products.filter(brand=form.cleaned_data['brand'])
 
     return render(request, 'product_list.html', {'form': form, 'products': products})
-
-
-
 @login_required
 def profile_view(request):
-    profile = Profile.objects.get(user=request.user)
+    profile, created = Profile.objects.get_or_create(user=request.user)
     return render(request, 'profile.html', {'profile': profile})
 
 @login_required
@@ -102,6 +99,8 @@ def add_to_cart(request):
         cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
         cart_item.quantity += int(quantity)
         cart_item.save()
+        cart.cart_id = f"{product.id}_{cart.cartitem_set.count()}"
+        cart.save()
         return redirect('cart')
 
 @login_required
@@ -112,4 +111,21 @@ def remove_from_cart(request):
         cart = get_object_or_404(Cart, user=request.user)
         cart_item = get_object_or_404(CartItem, cart=cart, product=product)
         cart_item.delete()
+        cart.cart_id = f"{product.id}_{cart.cartitem_set.count()}"
+        cart.save()
         return redirect('cart')
+
+def place_order(request):
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.user = request.user
+            order.cart = Cart.objects.get(user=request.user)  # Get the user's cart
+            order.save()
+            request.user.cart.cartitem_set.all().delete()  # Clear the cart
+            messages.success(request, 'Your order has been placed successfully.')  # Add success message
+            return redirect('cart')  # Redirect to the cart page
+    else:
+        form = OrderForm()
+    return render(request, 'place_order.html', {'form': form})

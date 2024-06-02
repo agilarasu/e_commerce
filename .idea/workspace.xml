@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b33af92-4230-4121-ad36-1019e5741e16" name="Changes" comment="Changed cart functions and ui">
+    <list default="true" id="3b33af92-4230-4121-ad36-1019e5741e16" name="Changes" comment="css">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e_commerce/templates/place_order.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_commerce/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_commerce/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_commerce/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_commerce/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_commerce/templates/base_generic.html" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/templates/base_generic.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/e_commerce/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_commerce/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/e_commerce/templates/product_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/templates/product_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_commerce/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_commerce/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_commerce/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_commerce/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,26 +31,30 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "agilarasu"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;agilarasu&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/agilarasu/e_commerce.git",
-    "accountId": "beb8fa49-910d-412f-97b5-e97c324fc7b1"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/agilarasu/e_commerce.git&quot;,
+    &quot;accountId&quot;: &quot;beb8fa49-910d-412f-97b5-e97c324fc7b1&quot;
   }
-}]]></component>
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -57,7 +70,9 @@
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/happy/PycharmProjects/e_commerce/e_commerce/templates",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -68,11 +83,32 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="QodanaHighlightedReportService">
+    <option name="localRunNotPublishedPersistedInfo">
+      <LocalReportPersistedInfo>
+        <option name="path" value="/tmp/qodana_output/qodana.sarif.json" />
+        <option name="reportGuid" value="ca39c907-9a18-40e8-995d-70aca6a20010" />
+        <option name="reportName" value="e_commerce/qodana/2024-06-02" />
+      </LocalReportPersistedInfo>
+    </option>
+  </component>
+  <component name="QodanaIsSelectedPersistenceService">
+    <option name="selectedOrLoading" value="true" />
+  </component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="/tmp/qodana_output/qodana.sarif.json" reportGuid="ca39c907-9a18-40e8-995d-70aca6a20010" reportId="e_commerce/qodana/2024-06-02" />
+    </option>
+  </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/e_commerce/templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/images" />
+      <recent name="$PROJECT_DIR$/e_commerce" />
       <recent name="$PROJECT_DIR$/static/e_commerce" />
       <recent name="$PROJECT_DIR$/static" />
-      <recent name="$PROJECT_DIR$/e_commerce" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -122,6 +158,9 @@
       <workItem from="1717302455127" duration="274000" />
       <workItem from="1717302743631" duration="6765000" />
       <workItem from="1717309805678" duration="5698000" />
+      <workItem from="1717317212839" duration="2575000" />
+      <workItem from="1717319812430" duration="1396000" />
+      <workItem from="1717331396289" duration="5200000" />
     </task>
     <task id="LOCAL-00001" summary="..">
       <option name="closed" value="true" />
@@ -147,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717315058423</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="css">
+      <option name="closed" value="true" />
+      <created>1717317329144</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717317329144</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +204,7 @@
     <MESSAGE value=".." />
     <MESSAGE value="Changed font and base colour of the application" />
     <MESSAGE value="Changed cart functions and ui" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed cart functions and ui" />
+    <MESSAGE value="css" />
+    <option name="LAST_COMMIT_MESSAGE" value="css" />
   </component>
 </project>

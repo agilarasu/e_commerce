@@ -60,7 +60,7 @@
     <p>Phone Number: {{ profile.phone_number }}</p>
     {% for item in cart.cartitem_set.all %}
     <div class="cart-item">
-        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+        <!-- <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"> -->
         <h3>{{ item.product.name }}</h3>
         <p>Price: ${{ item.product.price }}</p>
         <p>Quantity: {{ item.quantity }}</p>
@@ -74,6 +74,17 @@
     {% endfor %}
     <div class="cart-total">
         <h3>Total: ${{ cart.total }}</h3>
+        <form action="{% url 'place_order' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Place Order">
+    </form>
+        {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
     </div>
 </div>
     <script>

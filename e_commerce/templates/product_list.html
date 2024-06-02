@@ -91,6 +91,7 @@
             {% for product in products %}
             <article class="product-card">
                 <figure>
+                    {% load static %}
                     <img src="{{ product.image.url }}" alt="{{ product.name }}">
                 </figure>
                 <div class="product-info">
