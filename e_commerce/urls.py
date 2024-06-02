@@ -10,9 +10,8 @@ urlpatterns = [
     path('cart/', views.cart_view, name='cart'),
     path('admin/', admin.site.urls),
     path('logout/', logout_view, name='logout'),
-    path('add_to_cart/', add_to_cart, name='add_to_cart'),
-    path('cart/', cart_view, name='cart'),
-    path('clear_cart/', views.clear_cart, name='clear_cart'),
+    path('add_to_cart/', views.add_to_cart, name='add_to_cart'),
+    path('remove_from_cart/', views.remove_from_cart, name='remove_from_cart'),
     path('profile/', views.profile_view, name='profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
 ]

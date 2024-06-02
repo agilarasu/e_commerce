@@ -92,34 +92,24 @@ def cart_view(request):
     cart = Cart.objects.get(user=request.user)
     return render(request, 'cart.html', {'cart': cart})
 
-
 @login_required
 def add_to_cart(request):
-    if request.method == 'POST' and request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        try:
-            data = json.loads(request.body)
-            product_id = data.get('product_id')
-            if product_id is None:
-                return JsonResponse({"error": "Missing product_id in request body"}, status=400)
-            product = get_object_or_404(Product, id=product_id)
-            cart = Cart.objects.get(user=request.user)
-            cart.products.add(product)
-            return JsonResponse({"message": "Product added to cart successfully."}, status=200)
-        except json.JSONDecodeError:
-            return JsonResponse({"error": "Invalid JSON"}, status=400)
-        except Exception as e:
-            return JsonResponse({"error": str(e)}, status=400)
-    return JsonResponse({"error": "Invalid request"}, status=400)
+    if request.method == 'POST':
+        product_id = request.POST.get('product_id')
+        quantity = request.POST.get('quantity', 1)
+        product = get_object_or_404(Product, id=product_id)
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+        cart_item.quantity += int(quantity)
+        cart_item.save()
+        return redirect('cart')
 
 @login_required
-def clear_cart(request):
-    if request.method == 'GET':
-        try:
-            cart = Cart.objects.get(user=request.user)
-            cart.products.clear()
-            return JsonResponse({"message": "Cart cleared successfully."}, status=200)
-        except Cart.DoesNotExist:
-            return JsonResponse({"error": "Cart does not exist."}, status=400)
-        except Exception as e:
-            return JsonResponse({"error": str(e)}, status=400)
-    return JsonResponse({"error": "Invalid request"}, status=400)
+def remove_from_cart(request):
+    if request.method == 'POST':
+        product_id = request.POST.get('product_id')
+        product = get_object_or_404(Product, id=product_id)
+        cart = get_object_or_404(Cart, user=request.user)
+        cart_item = get_object_or_404(CartItem, cart=cart, product=product)
+        cart_item.delete()
+        return redirect('cart')

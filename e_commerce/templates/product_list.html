@@ -22,12 +22,10 @@
                     <span class="price">Price: ${{ product.price }}</span>
                     <form method="post" action="{% url 'add_to_cart' %}">
                         {% csrf_token %}
-                        <button class="add-to-cart" data-product-id="{{ product.id }}">Add to Cart</button>
-
-
-
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <input type="number" name="quantity" value="1">
+                        <button type="submit">Add to Cart</button>
                     </form>
-
                 </div>
 
             </article>
